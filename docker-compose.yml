@@ -253,12 +253,20 @@ services:
       - thumbnails
 
   mailpit:
-    image: axllent/mailpit:v1.12.1
+    image: namshi/smtp
+    # image: axllent/mailpit:v1.12.1
     restart: unless-stopped
     ports:
       - 8025:8025
     networks:
       - lila-network
+    environment:
+      SMTP_HOST: ${SMTP_HOST} # Your SMTP host
+      SMTP_PORT: ${SMTP_PORT} # Usually 587 for TLS
+      SMTP_USERNAME: ${SMTP_USERNAME} # Your SMTP service username
+      SMTP_PASSWORD: ${SMTP_PASSWORD} # Your SMTP service password
+      SMTP_USE_TLS: ${SMTP_USE_TLS} # true or false
+      SMTP_USE_SSL: ${SMTP_USE_SSL}
 
   mongo_express:
     image: mongo-express:1.0.2-20-alpine3.19
@@ -280,7 +288,7 @@ services:
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
-      - DOCKER_INFLUXDB_INIT_PASSWORD=password
+      - DOCKER_INFLUXDB_INIT_PASSWORD=AmpedXJ90
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=secret
       - DOCKER_INFLUXDB_INIT_ORG=lila-docker
       - DOCKER_INFLUXDB_INIT_BUCKET=kamon
