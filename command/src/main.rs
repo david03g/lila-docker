@@ -226,7 +226,7 @@ fn setup(mut config: Config) -> std::io::Result<()> {
     create_placeholder_dirs();
 
     let mut repos_to_clone: Vec<Repository> = vec![
-        Repository::new("lichess-org", "lila"),
+        Repository::new("david03g", "lila"),
         Repository::new("lichess-org", "lila-ws"),
     ];
 
@@ -280,7 +280,7 @@ fn create_placeholder_dirs() {
     // otherwise the directories will be created by Docker
     // when the volumes are mounted and they may be owned by root
     [
-        Repository::new("lichess-org", "lila"),
+        Repository::new("david03g", "lila"),
         Repository::new("lichess-org", "lila-ws"),
         Repository::new("lichess-org", "lila-db-seed"),
         Repository::new("lichess-org", "lifat"),
@@ -543,7 +543,7 @@ mod tests {
 
     #[test]
     fn test_repository() {
-        let repo = Repository::new("lichess-org", "lila");
+        let repo = Repository::new("david03g", "lila");
         assert_eq!(repo.org, "lichess-org");
         assert_eq!(repo.project, "lila");
         assert_eq!(repo.full_name(), "lichess-org/lila");
