@@ -24,7 +24,7 @@ Click here to create a workspace:
 1. Clone this repo:
 
     ```bash
-    git clone https://github.com/lichess-org/lila-docker
+    git clone https://github.com/david03g/lila-docker
     ```
 
 1. Start the services
